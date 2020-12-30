@@ -51,7 +51,7 @@
 %%----------------------------------------------------
 %% Insert the title of your paper between the brackets
 %%----------------------------------------------------
-\title{Interference characteristics in FMCW Radars for Indoor Sensing}
+\title{Interference characteristics in FMCW Radars}
 
 %%---------------------------------------------
 %% Insert authors name(s) and address(es)
@@ -284,7 +284,15 @@ Configure Target initial state, dynamics \& Reflection property\;
 %%% ---- Pseudo Code end -----
 
 \section{Results}
+\subsection*{Indoor Scenario: Comparison of results from Actual Measurements with Simulation}
+Recording: Difference Map from HW compared with Simulation results
 
+\subsection*{Indoor Scenario: SnR and Detection Probability evaluation using Validated Sensor parameters - Scenario extension}
+Dynamic target: Target motion from 10m to 1m. Derive detection probability and SnR with Static interferers.
+
+
+\subsection*{Outdoor scenario: SnR and Detection Probability evaluation using Validated Sensor parameters - Scenario extension with variation in type of interference}
+Target motion from 100m to 1m. Derive detection probability and SnR with dynamic interferers.
 The results referred in fig \ref{fig:SnR}, indicate the degradation in the Signal-to-Noise ratio w.r.t. increasing range of the Target. Detection probability was derived from SnR characteristics [refer Fig: \ref{fig:PD}] using the relationship mentioned below [\cite{Richards12}, Sec. 3.3.8]:
 \begin{equation}\label{eq:PD_vs_SnR}
 P_D = (P_{FA})^{\frac{1}{1+SNR}}
