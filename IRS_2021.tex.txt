@@ -17,14 +17,96 @@
 \usepackage{fancyhdr}
 \input{irs.tex}
 \usepackage{color}
-\usepackage{float}
+% \usepackage{subfigure}
+\usepackage{subcaption}
 \usepackage[ruled,vlined]{algorithm2e}
 \usepackage{hyperref}
-\usepackage{subfig}
+\usepackage{glossaries}
+\usepackage{comment}
 %%--------------------------------------------------------------------
 %% Enter further packages required for your abstract
 
 
+
+\newcommand{\bw}{\mbox{\boldmath{$w$}}}
+\newcommand{\bs}{\mbox{\boldmath{$s$}}}
+\newcommand{\bp}{\mbox{\boldmath{$p$}}}
+\newcommand{\bb}{\mbox{\boldmath{$b$}}}
+\newcommand{\bh}{\mbox{\boldmath{$h$}}}
+\newcommand{\bv}{\mbox{\boldmath{$v$}}}
+\newcommand{\bc}{\mbox{\boldmath{$c$}}}
+\newcommand{\bi}{\mbox{\boldmath{$i$}}}
+\newcommand{\bn}{\mbox{\boldmath{$n$}}}
+\newcommand{\by}{\mbox{\boldmath{$y$}}}
+\newcommand{\bJ}{\mbox{\boldmath{$J$}}}
+\newcommand{\bx}{\mbox{\boldmath{$x$}}}
+\newcommand{\bX}{\mbox{\boldmath{$X$}}}
+\newcommand{\bzeta}{\mbox{\boldmath{$\zeta$}}}
+\newcommand{\bSigma}{\mbox{\boldmath{$\Sigma$}}}
+\newcommand{\bsigma}{\mbox{\boldmath{$\sigma$}}}
+\newcommand{\bGamma}{\mbox{\boldmath{$\Gamma$}}}
+\newcommand{\bOmega}{\mbox{\boldmath{$\Omega$}}}
+\newcommand{\bI}{\mbox{\boldmath{$I$}}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newacronym{APAS}{APAS}{Almost Perfect auto-correlation Sequences}
+\newacronym{MPS}{MPS}{Minimum Peak Sidelobe} 
+\newacronym{PMCW}{PMCW}{Phase Modulated Continuous Wave}
+\newacronym{MF}{MF}{Merit Factor}
+\newacronym{SNR}{SNR}{Signal to Noise Ratio}
+\newacronym{INR}{INR}{Interference to Noise Ratio}
+\newacronym{SIR}{SIR}{Signal-to-Interference Ratio}
+\newacronym{SINR}{SINR}{Signal to Interference plus Noise Ratio}
+\newacronym{AF}{AF}{Ambiguity Function}
+\newacronym{MIMO}{MIMO}{Multiple Input Multiple Output}
+\newacronym{SISO}{SISO}{Single Input Single Output}
+\newacronym{CD}{CD}{Coordinate Descent}
+\newacronym{BCD}{BCD}{Block Coordinate Descent}
+\newacronym{GD}{GD}{Gradient Descent}
+\newacronym{MM}{MM}{Majorization-Minimization}
+\newacronym{FMCW}{FMCW}{Frequency Modulated Continuous Wave}
+\newacronym{CDM}{CDM}{Code Division Multiplexing}
+\newacronym{DFT}{DFT}{Discrete Fourier Transform}
+\newacronym{FFT}{FFT}{Fast Fourier Transform}
+\newacronym{MVDR}{MVDR}{Minimum Variance Distortionless Response}
+\newacronym{MBI}{MBI}{Maximum Block Improvement}
+\newacronym{RFPA}{RFPA}{Radio Frequency Power Amplifier}
+\newacronym{BPSK}{BPSK}{Binary Phase Shift Keying}
+\newacronym{QPSK}{QPSK}{Quadrature Phase Shift Keying}
+\newacronym{ULA}{ULA}{Uniform Linear Array}
+\newacronym{DOF}{DOF}{Degrees of Freedom}
+\newacronym{PSK}{PSK}{Phase Shift Keying}
+\newacronym{PSL}{PSL}{Peak Sidelobe Level}
+\newacronym{ISL}{ISL}{Integrated Sidelobe Level}
+\newacronym{ISLR}{ISLR}{Integrated Sidelobe Level Ratio}
+\newacronym{LFM}{LFM}{Linear Frequency Modulation}
+\newacronym{HPM}{HPM}{Hybrid Phased MIMO}
+\newacronym{MPSK}{MPSK}{M-ary Phase Shift Keying}
+\newacronym{LPI}{LPI}{Low Probability of Intercept}
+\newacronym{RoC}{RoC}{Radar-on-Chip}
+\newacronym{RF}{RF}{Radio-Frequency}
+\newacronym{PAR}{PAR}{Peak-to-Average Power Ratio}
+\newacronym{LTE}{LTE}{Long Term Evolution}
+\newacronym{DL}{DL}{Down Link}
+\newacronym{UL}{UL}{Up Link}
+\newacronym{iid}{i.i.d.}{independent and identically distributed}
+\newacronym{BS}{BS}{Base Station}
+\newacronym{BSUM}{BSUM}{Block Successive Upper-bound Minimization}
+\newacronym{SDR}{SDR}{Software-Defined Radio}
+\newacronym{OTA}{OTA}{Over-The-Air}
+\newacronym{USRP}{USRP}{Universal Software Radio Peripheral}
+\newacronym{FoV}{FoV}{field of view}
+\newacronym{CPI}{CPI}{Coherent Pulse Interval}
+\newacronym{LoS}{LoS}{Line of Sight}
+\newacronym{Tx}{Tx}{Transmitter}
+\newacronym{Rx}{Rx}{Receiver}
+\newacronym{LNA}{LNA}{low-noise amplifier}
+\newacronym{TI}{TI}{Texas Instrument}
+\newacronym{PRT}{PRT}{pulse repetition time}
+\newacronym{TBP}{TBP}{Time Bandwidth Product}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
@@ -51,7 +133,8 @@
 %%----------------------------------------------------
 %% Insert the title of your paper between the brackets
 %%----------------------------------------------------
-\title{Interference characteristics in FMCW Radars}
+% \title{Interference characteristics in FMCW Radars}
+\title{FMCW-FMCW Interference Analysis in mm-Wave Radars; An indoor case study and validation by measurements}
 
 %%---------------------------------------------
 %% Insert authors name(s) and address(es)
@@ -72,7 +155,7 @@ Robin Amar, Mohammad Alaee-Kerahroodi, Bhavani Shankar M. R.}
 %% The abstract starts here
 %%------------------------------------
 \abstract{
-Radar based Indoor Sensing for Target classification with Multi-Sensor arrangement has gained a lot of attention. This often leads to the problem of Interference from other sensors. In order to understand the deterioration in detection performance of the sensor, Interference quantization is required to understand the maximum possible rise in Signal-to-interference-plus-noise ratio (SINR), target detection and classification. Using FMCW radar sensors, we intend to investigate three types of interference phenomenon that occurs for the radar sensors operating in the same band: "Same slope", "Similar slope" and "Intersecting slope". This paper discusses the results that have been generated in simulations on MATLAB using Monte-Carlo methods and further verified on hardware for all the three types of interference.
+Radar based Indoor Sensing for Target classification with Multi-Sensor arrangement has recently gained a lot of attention. This often leads to the problem of Interference from other sensors. In order to understand the deterioration in detection performance of the sensor, Interference quantization is required to understand the maximum possible loss in Signal-to-interference-plus-noise ratio, target detection and classification. Using FMCW radar sensors, we intend to investigate three types of interference phenomenon that occurs for the radar sensors operating in the same band: ``Same slope'', ``Similar slope'' and ``Sweeping slope''. This paper discusses the results that have been generated in simulations on MATLAB using Monte-Carlo methods and further verified on hardware for all the three types of interference. 
 }
 
 %%------------------------------------
@@ -81,269 +164,388 @@ Radar based Indoor Sensing for Target classification with Multi-Sensor arrangeme
 
 \section{Introduction}
 
-Radar sensing has various inherent advantages in different scenarios and its usage in civilian applications has been proliferating in addition to the traditional defence applications. Some of these applications include automotive, indoor sensing, airport, harbor and highway traffic control, wave forecast and marine climatology to name a few \cite{RadarApplns}. With different applications and dearth of standardization, presence of multiple radar systems with uncoordinated transmissions has become a reality. Considering an example of automotive application, radar sensors are used for cruise control and collision avoidance systems in cars. In the absence of coordination among different cars, scarcity of spectrum and the need for high bandwidth to enable high resolution sensing, it is inevitable that different cars use identical bands simultaneously, leading to interference \cite{MOSARIM2012}. Similarly, its usage in Indoor Sensing for Target detection and classification with multiple sensors has gained a lot of attention [\nameref{appendix_1}] \cite{IndoorSensing_1}. Multi-sensor setup leads to mutual interference from neighboring radars operating simultaneously in each others field of view (FoV) \cite{Alland23}\cite{Interf45}. Analyses and test results involving multiple radar sensors indicate that mutual interference can be substantial unless suitable mitigation techniques are employed. For a given system, its interference quantification (maximum possible rise in signal-to-interference ratio (SIR)) and robustness is required to understand the target detection and classification capability of a sensor in worst scenarios. In this paper, an effort has been made to explore the interference occurring from "close proximity" and direct line of sight sensors which are arranged in a multi-sensor arrangement for Indoor Sensing application. The investigation has been conducted using FMCW radar sensors in simulation and on hardware. Further, the backscatter and interference characteristics similarity between indoor sensing and outdoor sensing has also been discussed.
+Radar sensing has various inherent advantages in different scenarios and its usage in civilian applications has been proliferating in addition to the traditional defence applications. Some of these applications include automotive, indoor sensing, airport, harbor and highway traffic control, wave forecast and marine climatology to name a few \cite{RadarApplns}. With different applications and dearth of standardization, presence of multiple radar systems with uncoordinated transmissions has become a reality. Considering an example of automotive application, radar sensors are used for cruise control and collision avoidance systems in cars. In the absence of coordination among different cars, scarcity of spectrum and the need for high bandwidth to enable high resolution sensing, it is inevitable that different cars use identical bands simultaneously, leading to interference \cite{MOSARIM2012}. Similarly, its usage in Indoor Sensing for Target detection and classification with multiple sensors has gained a lot of attention. Few major applications are People counting, Flash and run-through body scanners, automotive interior monitoring, Robot positioning, industrial machine lock/cut-off etc.\cite{IndoorSensing_1}. 
 
-The outline of this paper is as follows: Section II presents the system model detailing the interference set-up and sets up the signal model incorporating interference phenomenon. Section III presents the measurement setup used for interference measurement in Indoor environment and analysis using commercial-off-the-shelf (COTS) mmWave radar modules. The results from this measurement is analysed in Section IV and section V presents the conclusions drawn from the work.
+Multi-sensor setup leads to mutual interference from neighboring radars operating simultaneously in each others \gls{FoV} \cite{Alland23}, \cite{Interf45}. Analyses and test results involving multiple radar sensors indicate that mutual interference can be substantial unless suitable mitigation techniques are employed. %{\color{red} Here we need some references, saying see for example [a-b]}%
+For example, two 77GHz long range radars with 18dB antenna gains and 10dBm transmit powers, facing each other, would cause -45dBm interference to each other \cite{Interf78}, \cite{Interf93}. Interference becomes inevitable from other sensors when the application insists to have best possible resolution for better classification of targets which leads to utilizing full bandwidth available in an operating band which is the case in many indoor and outdoor sensing scenarios. For a given system, its interference quantification (maximum possible rise in \gls{SIR}) and robustness is required to understand the target detection and classification capability of a sensor in worst scenarios.
+%{\color{red}We need to talk about motivation of the paper here. Saying that why we need to investigate the interference effect for indoor scenes: talking about possibility of using the full resources, and also talking about possible indoor scenarios like tunnel, inside parking of big malls, etc. We need to also talk about difference of this paper with the other papers who have worked in this area. You can use some recent works maybe the one that you have already presented in the weekly meeting, talking about what are the differences of your work with the others. Then, we need to also talk about contribution, saying that we are analyzing the interference effect for the indoor scene for the first time (if this has not be done)}
+In this paper, an effort has been made to explore the interference occurring from ``close proximity'' and direct \gls{LoS} sensors which are arranged in a multi-sensor arrangement for Indoor Sensing application. The investigation has been conducted using mm-Wave \gls{FMCW} radar sensor measurement set-up supported by an elaborate simulation. Further, the backscatter and interference characteristics similarity between indoor sensing and outdoor sensing has also been discussed.
 
-In this extended abstract, section II and III are detailed while preliminary results are included in Section IV. Detailed results and analysis will be included in the final paper.
+The outline of this paper is as follows: Section II presents the system model detailing the interference set-up and sets up the signal model incorporating the interference phenomenon. Section III analyses the impact of interference in Indoor scenarios using an elaborate simulation setup. This section highlights the perturbations in the Range-Doppler domain due to interference and its impact on target detection. Section IV presents an Indoor Interference measurement setup for corroborating the findings of section III using commercial-off-the-shelf (COTS) mmWave radar modules. The results from this measurement are analysed and section V presents the conclusions drawn.
+
+% In this extended abstract, section II and III are detailed and representative simulation results on the impact of interference are included. Initial recordings from the measurement setup are included in section IV while the detailed results and analysis based on these recordings will be included in the final paper.
 %%------------------------------------
 %% System Model section
 %%------------------------------------
-
-\section{System Model}
-\subsection*{Basic FMCW victim radar sensor setup}
-
-In a general frequency modulated continuous wave (FMCW) radar [Fig: \ref{fig:SystemModel}], frequency sweep, i.e., a chirp, is generated by a waveform generator. The generated chirp signal is split and sent into two different signal paths: one path is directed to the transmitter (Tx) antenna, while the other path is directed to the mixer correlator. Before the chirp is sent out on the Tx antenna it passes through a power amplifier (PA), which boosts the transmitted energy. It is also possible to introduce random interchirp idle periods in the chirp generation process to reduce the probability of mutual interference with other FMCW radars \cite{IEEE_2020_p2}. 
-
+%
+\vspace*{-0.21in}
+%
+\section{System Model}\vspace*{-0.1in}
+% \subsection*{Basic FMCW victim radar sensor setup}
 \begin{figure}
 \centering
-\includegraphics[width=0.7\textwidth]{images/SystemModel.pdf}
+\includegraphics[width=0.99\textwidth]{images/SystemModel.png}
 \caption{System Model description}	 \label{fig:SystemModel}
+\vspace*{-0.2in}
 \end{figure} 
-
-The transmit waveform of an FMCW radar with \emph{L} consecutive linear FM chirps (or sweeps) can be expressed as
-
+%
+In a generic \gls{FMCW} radar \figurename{\ref{fig:SystemModel}}, the frequency sweep, i.e., a chirp, is generated by a waveform generator and this  chirp is utilized in two different signal paths: one is directed to the \gls{Tx} antenna, while the other is directed towards the mixer correlator. Before the chirp is transmitted from the Tx antenna, it passes through a power amplifier to boost the transmitted energy. 
+% It is also possible to introduce random interchirp idle periods in the chirp generation process to reduce the probability of mutual interference with other FMCW radars \cite{IEEE_2020_p2}. 
+%
+\vspace*{-0.2in}\subsection{Received signal model}\vspace*{-0.1in}
+The FMCW waveform with \emph{L} consecutive linear FM chirps (or sweeps) can be expressed as
 \begin{equation}\label{eq:1}
 s(t) = \sum_{l=0}^{L-1} x(t - lT_c),
 \end{equation} 
 where the individual chirps are given by
 \begin{equation}\label{eq:2}
-x(t) = e^{j\phi(t)}rect_{T_c}(t), \quad  \phi(t)=2\pi(f_ct+0.5\alpha t^2).
+x(t) = e^{j\phi(t)}rect_{T_v}(t), \quad  \phi(t)=2\pi(f_ct+0.5\alpha t^2).
 \end{equation} 
-
-Here, $\alpha = BW\textsubscript{v}/T\textsubscript{c}$ is the chirp slope, $BW\textsubscript{v}$ denotes the sweep bandwidth, $T\textsubscript{c}$ represents the chirp duration, $f\textsubscript{c}$ is the carrier frequency and $rect\textsubscript{T\textsubscript{c}}(t)$ is rectangular pulse of duration $T\textsubscript{c}$ of the victim radar. The reflected signal from target reflections is very weak due to two-way free-space propagation path loss and the absorption loss at the target. This requires the receive signal to be amplified with a low-noise amplifier (LNA) to maintain an acceptable signal-to-noise-ratio (SNR). The amplified signal from the target reflection is mixed with the Tx signal in the mixer, which is called \emph{dechirping}. The round-trip delay and Doppler shift caused by the relative velocity of the target, shift the frequency of the received signal compared to that of the transmitted signal. As a result, the mixer creates a beat signal that will pass through a low-pass filter and be digitized, yielding delay and Doppler estimates after transforming into frequency domain. In modern automotive radars, it is also possible to estimate azimuth and elevation of targets using multiple antennas by acquiring the signal in spatial domain and further transforming them into frequency domain as an additional signal dimension (Range-fast chirp and Doppler-slow chirp as the first two dimensions).
-
-
-\subsection*{Receive Signal Model}
-Assuming there exists a single target (point scatterer), whose impact on the received signal is characterized by a complex gain $\Gamma$ (incorporating the effects of path loss, antenna gain and radar cross section (RCS)) with an overall round-trip propagation delay $\tau = 2R/c$ and a doppler shift of $\nu\textsubscript{T} = 2v\textsubscript{T}/\lambda$, where $R$ and $v\textsubscript{T}$ denotes, respectively, the distance and relative radial velocity between the radar and the target; $c$ is the speed of the EM wave propagation in air. Further, depending upon the dynamics of the scenario, the receive signal at the Victim sensor can be categorized into 3 signal models:
-
-\subsubsection*{Signal Model: Stationary target and stationary sensor }
-\begin{equation}\label{eq:3}
-    r(t) = \Gamma \sum_{l=0}^{L-1} x(t - lT_c - \tau) + w(t)
-\end{equation}
-
-\subsubsection*{Signal Model: Relative velocity \emph{v} between target and sensor}
-\begin{equation}\label{eq:4}
-    r(t) = \Gamma \sum_{l=0}^{L-1} x_l(t - lT_c - \tau).e^{j2\pi \nu_T} + w(t)
-\end{equation}
-
-\subsubsection*{Signal Model: Relative velocity \emph{v} between target and sensor + P Interferers}
-Assuming no coordination among multiple sensors, the likelihood of interference cannot be overlooked \cite{Interf_Brooker} and the probability of interference varies with the type of chirp characteristics \cite{TI_2020}. Assuming there can be P interferers in the FoV of the victim sensor, with different chirp repetition time T\textsubscript{c\textsubscript{p}} and bandwidth BW\textsubscript{p} which leads to non-identical chirp slopes $\beta$\textsubscript{p} (where $\beta$\textsubscript{p} = BW\textsubscript{p}/T\textsubscript{c\textsubscript{p}}). In addition to it, every interferer may have M chirps and its complex channel gain [including the effects of path loss and antenna gain] is represented by $\zeta$. Therefore, the cumulative signal received at the victim sensor from all the interferers can be given by 
-\begin{equation}\label{eq:5}
-y(t) = \sum_{p=0}^{P-1} \sum_{m=0}^{M-1} \zeta_p y_p(t - mT_{c_p})
-\end{equation} 
-where individual interferers are
-\begin{equation}\label{eq:6}
-y_p(t) = e^{j\psi(t)}rect_{T_{c_p}}(t), \quad  \psi(t)=2\pi(f_ct+0.5\beta_p t^2), M = LT_c/T_{c_p}
-\end{equation}
-
+%
+Here, $\alpha = BW_{v}/T_{v}$ is the chirp slope, $BW_{v}$ denotes the sweep bandwidth, $T_{v}$ represents the chirp duration, $f_{c}$ is the carrier frequency, $rect_{T_{v}}(t)$ is rectangular pulse of duration $T_{v}$ of the victim radar and $T_c$ is the \gls{PRT}. The reflected signal from target is very weak due to two-way free-space propagation path loss and the absorption loss at the target. This requires the receive signal to be amplified with a \gls{LNA} to maintain an acceptable signal-to-noise-ratio (SNR). The amplified signal from the target reflection is mixed with the Tx signal at the mixer, this is called \emph{dechirping}. The round-trip delay and doppler shift caused by the relative velocity of the target, shift the frequency of the received signal compared to that of the transmitted signal. As a result, the mixer creates a beat signal that will pass through a low-pass filter and be digitized, yielding delay and Doppler estimates after transforming into frequency domain. In modern automotive radars, it is also possible to estimate azimuth and elevation of targets using multiple antennas by acquiring the signal in spatial domain and further transforming them into frequency domain as an additional signal dimension (Range-fast chirp and Doppler-slow chirp as the first two dimensions).\\
+Assuming there exists a single target (point scatterer), whose impact on the received signal is characterized by a complex amplitude $\gamma$ (incorporating the effects of path loss, antenna gain and radar cross section (RCS)) with an overall round-trip propagation delay $\tau = 2R/c$ and a doppler shift of $\nu_{T_c} = 2v_{t}/\lambda$, where $R$ and $v_{t}$ denotes, respectively, the distance and relative radial velocity between the radar and the target; $c$ is the speed of the EM wave propagation in air. 
+{
+In a general case for a single target scenario, the received signal contaminated with clutter, noise and the interference from multiple sensors can be written as,
 \begin{equation}\label{eq:7}
-    r(t) = \Gamma \sum_{l=0}^{L-1} x_l(t - lT_c - \tau).e^{j2\pi \nu_T} + y(t) + w(t)
+    r(t) = \gamma s(t - \tau) e^{j2\pi \nu_T} + c(t) + y(t) + w(t),
 \end{equation}
+where  $x_l(t)$ is the $l$-th transmitted signal (chirp) which is attenuated by $\gamma$ and delayed by $\tau$, $y(t)$ is the interference (to be discussed below) and $w(t)$ is the  receiver noise  considered as a  zero-mean  white  Gaussian  process. In \eqref{eq:7}, $c(t)$ and $\gamma$ is the clutter and attenuation of the transmitted signal respectively which can be expressed as
+\begin{equation} 
+    c(t) =  \sum_{k=0}^{K-1}\alpha_{k} s(t - \tau_{k}).e^{j2\pi \nu_{T_c}} \hspace{0.5cm} \textrm{and} \hspace{0.5cm}
+    \gamma = \frac{P_v G_v^2 \lambda^2 \sigma_{tgt}}{(4\pi)^3 R_{tgt}L}
+\end{equation} 
+where $\alpha_k$ is the backscatter power received from the $k\textsuperscript{th}$ scatterer in clutter with $\tau_{k}$ delay and $\nu_{T_c}$ doppler shift due to the motion of Victim sensor.\\
+We assume $P$ interferers in the \gls{FoV} of the victim sensor, located at $R_p$ relative distance with unique chirp time $T_I$, chirp repetition time $T_{p}$ and bandwidth $\text{BW}_p$ which leads to non-identical chirp slopes $\beta_p$ (where $\beta_p = \frac{\text{BW}_p}{T_{p}}$). 
+Further, the $p$th interferer is assumed to have $M$ chirps, all of which are attenuated by $\zeta_p$ due to the propagation loss in the medium between the interferers and the victim ($P_I, G_I, G_v, L$ are the \gls{Tx} power, \gls{Tx} gain, \gls{Rx} gain at victim and other losses respectively). The cumulative signal received from all the interferers can then be given by 
+\begin{equation} \label{eq:5}
+    y(t) = \sum_{p=0}^{P-1} \sum_{m=0}^{M-1} \zeta_{p} y_p(t - mT_{p}),
+\end{equation}
+where individual interferers are
+\begin{equation}
+\begin{aligned}
+    y_p(t)& = e^{j\psi(t)}rect_{T_{p}}(t), \quad  \psi(t)=2\pi(f_ct+0.5\beta_p t^2), \\
+    M & = LT_c/T_{p} \hspace{0.75cm} \textrm{and} \hspace{0.75cm}\zeta_{p} = \frac{P_I G_I G_v \lambda^2}{(4\pi)^2 R_p^2 L} 
+\end{aligned}
+\end{equation}
+%%%%%%%%%% SubFigure - Interference Types %%%%%%%%%%%%%%%%
+\begin{figure*}
+    \centering
+    \begin{subfigure}{0.49\textwidth}
+        \centering
+        \includegraphics[width=1\linewidth]{images/InterferenceTypes_Fig1_Backscatter.pdf}
+        \caption{Same-slope/Parallel interference}
+        \label{fig:Same Slope / Parallel interference}
+    \end{subfigure}
+    % \hspace{.25in}%
+    \begin{subfigure}{0.49\textwidth}
+         \centering
+        \includegraphics[width=1\linewidth]{images/InterferenceTypes_Fig2_SimilarSlope.pdf}
+        \caption{Similar-slope interference}
+        \label{fig:similar slope interference}
+    \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+         \centering
+        \includegraphics[width=1\linewidth]{images/InterferenceTypes_Fig3_Sweeping.pdf}
+        \caption{Sweeping interference}
+        \label{fig:sweeping interference}
+    \end{subfigure}
+    % \hspace{.25in}%
+    \begin{subfigure}{0.49\textwidth}
+         \centering
+        \includegraphics[width=1\linewidth]{images/InterferenceTypes_Fig4_Legend.pdf}
+        %\caption{$legend$}
+        \label{fig:legend}
+    \end{subfigure}
+    \caption{Three types of Interference}
+    \label{fig:InterferenceTypes}
+\end{figure*}
 
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=1.0\textwidth]{images/InterferenceTypes.pdf}
-   \caption{Types of Interference possible in practical scenarios}
-	 \label{fig:InterferenceTypes}
-\end{figure}
-
-Let $\tau_max$ denote the round-trip delay that corresponds to a maximum target range of interest (i.e.
-$\tau_max \geq \tau $ ), which is related to the radar bandwidth of interest $B_s$ as $\tau_max = B_s/\alpha$. The analog-to-digital converter (ADC) bandwidth $B_adc \leq B_s$ imposes a limit on $B_s$ and thus the maximum
-detectable range $r_max$. After low pass filtering the beat signal in (\ref{eq:7}) with bandwidth $B_s$, sampling
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+Let $\tau_{max}$ denote the round-trip delay corresponding to a maximum target range of interest (i.e.
+$\tau_{max} \geq \tau $ ); this is related to the radar bandwidth of interest $B_s$ as $\tau_{max} = B_s/\alpha$. The analog-to-digital converter (ADC) bandwidth $B_{adc} \leq B_s$ imposes a limit on $B_s$ and thus the maximum
+detectable range $r_{max}$. After low pass filtering, the beat signal in (\ref{eq:7}) with bandwidth $B_s$, sampling
 with a period of $T_s$, it is rearranged into a slow time - fast time data matrix, where $l\textsuperscript{th}$ row contains the samples of the $l\textsuperscript{th}$ chirp (slow time), while the $n\textsuperscript{th}$ column contains the $n\textsuperscript{th}$ sample of each chirp (fast time). This data matrix is further analysed to understand the impact of interference on the target detection using the measurement setup for indoor scenarios defined in the next section.
-
-\subsection*{Types of Interference}
-In paper \cite{TI_2020}, two types of interference are described: Parallel and Sweeping. After understanding the nature of interference possible in the practical scenarios, in order to form a holistic categorization of interference its extension is required to 3 categories. Addition of a new category of interference i.e. \emph{same slope interference} and \emph{similar slope interference} (redefinition of \emph{parallel slope}).
-\subsubsection*{Same Slope Interference}
-Same slope interference typically arises through the Multipath reflections that have a strong return (i.e. do not suffer from path and backscatter losses). These types of interference is generally observed in both outdoor and indoor scenarios. In outdoor scenarios it is observed in Tunnels and highways with high guard rails on the road borders in rainy conditions. In indoor scenarios, it is generally observed in underground parking and rooms with high reflecting walls and floor.
-\subsubsection*{Similar Slope Interference}
-This type of interference occurs when the interfering sensor is operating with similar bandwidth and chirp time. The redefinition was required because practically the probability of another sensor to operate with exactly same slope chirp is very low because the waveform generators operating on every hardware have their own linearity properties which will never yield absolutely parallel slope chirp.
-\subsubsection*{Intersecting Interference}
-This type of interference occurs when the interfering sensor is operating at a significantly high or low  bandwidth and different chirp time.
-
+}
+% Further, depending upon the dynamics of the scenario, the receive signal at the Victim sensor can be categorized into 3 signal models:
+%
+% \subsubsection*{Signal Model: Stationary target and stationary sensor }
+% \begin{equation}\label{eq:3}
+%     r(t) = \Gamma \sum_{l=0}^{L-1} x(t - lT_c - \tau) + w(t)
+% \end{equation}
+%
+% \subsubsection*{Signal Model: Relative velocity \emph{v} between target and sensor}
+% \begin{equation}\label{eq:4}
+%     r(t) = \Gamma \sum_{l=0}^{L-1} x_l(t - lT_c - \tau).e^{j2\pi \nu_T} + w(t)
+% \end{equation}
+%
+% \subsubsection*{Signal Model: Relative velocity \emph{v} between target and sensor + P Interferers}
+% Assuming no coordination among multiple sensors, the likelihood of interference cannot be overlooked \cite{Interf_Brooker} and the probability of interference varies with the type of chirp characteristics \cite{TI_2020}. Assuming there can be P interferers in the FoV of the victim sensor, with different chirp repetition time T\textsubscript{c\textsubscript{p}} and bandwidth BW\textsubscript{p} which leads to non-identical chirp slopes $\beta$\textsubscript{p} (where $\beta$\textsubscript{p} = BW\textsubscript{p}/T\textsubscript{c\textsubscript{p}}). In addition to it, every interferer may have M chirps and its complex channel gain [including the effects of path loss and antenna gain] is represented by $\zeta$. Therefore, the cumulative signal received at the victim sensor from all the interferers can be given by 
+% \begin{equation}\label{eq:5}
+% y(t) = \sum_{p=0}^{P-1} \sum_{m=0}^{M-1} \zeta_p y_p(t - mT_{c_p})
+% \end{equation} 
+% where individual interferers are
+% \begin{equation}\label{eq:6}
+% y_p(t) = e^{j\psi(t)}rect_{T_{c_p}}(t), \quad  \psi(t)=2\pi(f_ct+0.5\beta_p t^2), M = LT_c/T_{c_p}
+% \end{equation}
+%
+% \begin{equation}\label{eq:7}
+%     r(t) = \Gamma \sum_{l=0}^{L-1} x_l(t - lT_c - \tau).e^{j2\pi \nu_T} + y(t) + w(t)
+% \end{equation}
+%
+% \begin{figure}[ht]
+%   \centering
+%   \includegraphics[width=1.0\textwidth]{images/InterferenceTypes.pdf}
+%   \caption{Types of Interference possible in practical scenarios}
+% 	 \label{fig:InterferenceTypes}
+% \end{figure}
+%
+% Let $\tau_max$ denote the round-trip delay that corresponds to a maximum target range of interest (i.e.
+% $\tau_max \geq \tau $ ), which is related to the radar bandwidth of interest $B_s$ as $\tau_max = B_s/\alpha$. The analog-to-digital converter (ADC) bandwidth $B_adc \leq B_s$ imposes a limit on $B_s$ and thus the maximum
+% detectable range $r_max$. After low pass filtering the beat signal in (\ref{eq:7}) with bandwidth $B_s$, sampling
+% with a period of $T_s$, it is rearranged into a slow time - fast time data matrix, where $l\textsuperscript{th}$ row contains the samples of the $l\textsuperscript{th}$ chirp (slow time), while the $n\textsuperscript{th}$ column contains the $n\textsuperscript{th}$ sample of each chirp (fast time). This data matrix is further analysed to understand the impact of interference on the target detection using the measurement setup for indoor scenarios defined in the next section.
+%
+\vspace*{-0.21in}\subsection{Types of Interference}\vspace*{-0.1in}
+In  \cite{TI_2020}, two types of interference are described: Parallel and Sweeping. After understanding the nature of interference possible in the practical scenarios, in order to form a holistic categorization of interference its extension  to the following  categories is warranted. 
+\vspace*{-0.2in}\begin{enumerate}
+    \item \textit{Same Slope Interference}: This typically arises through the Multipath reflections that have a strong return (i.e. do not suffer from severe path and backscatter losses). These types of interference is generally observed in both outdoor and indoor scenarios. In outdoor scenarios it is observed in Tunnels and highways with high guard rails on the road borders in rainy conditions. In indoor scenarios, it is generally observed in underground parking and rooms with high reflecting walls and floor.
+    %
+    \item \textit{Similar Slope Interference}: This type of interference occurs when the interfering sensor is operating with similar bandwidth and chirp time. The redefinition was required because practically the probability of another sensor to operate with exactly same slope chirp is very low because the waveform generators operating on every hardware have their own linearity properties which will never yield absolutely parallel slope chirp.
+    %
+    \item \textit{Sweeping Interference}: This type of interference occurs when the interfering sensor is operating at a significantly high or low  bandwidth and different chirp time.
+\end{enumerate}
+The new characterization with regards to \cite{TI_2020} involves addition of a new category of interference i.e. \emph{same slope interference} and redinition of \emph{parallel slope} as \emph{similar slope interference}.
+% \subsubsection{Same Slope Interference}
+% Same slope interference typically arises through the Multipath reflections that have a strong return (i.e. do not suffer from path and backscatter losses). These types of interference is generally observed in both outdoor and indoor scenarios. In outdoor scenarios it is observed in Tunnels and highways with high guard rails on the road borders in rainy conditions. In indoor scenarios, it is generally observed in underground parking and rooms with high reflecting walls and floor.
+% \subsubsection{Similar Slope Interference}
+% This type of interference occurs when the interfering sensor is operating with similar bandwidth and chirp time. The redefinition was required because practically the probability of another sensor to operate with exactly same slope chirp is very low because the waveform generators operating on every hardware have their own linearity properties which will never yield absolutely parallel slope chirp.
+% \subsubsection{Sweeping Interference}
+% This type of interference occurs when the interfering sensor is operating at a significantly high or low  bandwidth and different chirp time.
+%
 %%------------------------------------
 %% Measurement section
 %%------------------------------------
+%
+\vspace*{-0.1in}\section{Interference Analysis}
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=0.9\textwidth]{images/LinkBudget.eps}
+%   \caption{Received Power variation with range at different processing stages of the system}
+% 	 \label{fig:RxPowervsRange}
+% \end{figure}
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}{0.79\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/LinkBudget.eps}
+    \end{subfigure}
+    \begin{subfigure}{0.2\textwidth}
+        \begin{center}
+        \tiny
+         \begin{tabular}{||c c||} 
+         \hline
+         Parameter & Value \\ [0.5ex] 
+         \hline\hline
+         Victim / Interferer Power & 12dBm  \\ 
+         \hline
+         TBP & 40.1773dB \\
+         \hline
+         Processing Gain & 21.0721dB \\
+         \hline
+         Noise Power & -68.83dB \\
+         \hline
+         Noise Power + CFAR & -57.83dB \\ [1ex] 
+         \hline
+        \end{tabular}
+        \end{center}
+    \end{subfigure}
+    \caption{Received Power variation with range at different processing stages of the system}
+    \label{fig:RxPowervsRange}
+\end{figure*}
 
-\section{Measurement Setup}
-%%% ---- Fig start -----
+\subsection*{Simulation}
+\begin{figure}[t]
+   \centering
+   \includegraphics[width=0.9\textwidth]{images/RangeDopplerSpec_3Interf.eps}
+   \caption{Range-Doppler Spectrum after 3 Interferers enter the FoV of the Victim Sensor}
+	 \label{fig:RDSptrm_3Interfs}
+\end{figure}
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.9\textwidth]{images/RangeDopplerSpec_MultiInterf.eps}
+   \caption{Range-Doppler Spectrum after 20 Interferers enter the FoV of the Victim Sensor}
+	 \label{fig:RDSptrm_MultiInterfs}
+\end{figure}
+Prior to the measurement campaign, a flexible software simulator for the considered scenarios is set-up. This would enable better identification of measurement set-ups, benchmarking results from measurements and validating the models used. Simulations were performed on MATLAB keeping in view the Indoor sensing capability of the sensor. For Indoor sensing, the victim and interferer sensor characteristics were as mentioned in \tablename{~\ref{table:1}}. 
+%Further, w. r. t. Outdoor sensing, there a  high number of interferers can be present in the victim radar's FoV. Hence, 20 Interferers were injected into the scenario for both similar and Sweeping type of interference. 
+
+As seen in the \figurename{~\ref{fig:RDSptrm_3Interfs}}, In a similar slope interference case, the $3$ interferers appear and dominate the target with RCS of $0$dBsm. For the given case, target could be detected because the likelihood of the interferer occuring in the same range-doppler bin is less. In order to further see the deterioration in the range-doppler spectrum, another scenario with $20$ Interferers is shown in the \figurename{~\ref{fig:RDSptrm_MultiInterfs}}.
+This enabled us to manifest the deteriorated performance of the sensor in the worst possible interference setup that can happen in an indoor environment.
+In order to derive more reliable results, Monte Carlo simulations were run on the PC to derive better estimates for the parameters: SNR, detection probability and spectrum states in different ranges of the approaching target.
+
+Considering the operation of victim sensor at room temperature (300K), the average noise power \emph{Pn} is -68.74dB and the CFAR threshold typically should be 12dB above the noise floor for a false alarm probability of $6.428\times1e-4$. With the Time-Bandwidth product gain of 40dB and coherent processing gain of 24dB, the receive power from the target and the interferer is shown in the \figurename{\ref{fig:RxPowervsRange}}. This plot provides an explanation to the results seen in \figurename{\ref{fig:RDSptrm_3Interfs}} and \figurename{\ref{fig:RDSptrm_MultiInterfs}} where the receive power of the interferers are always dominating the range-doppler spectrum. As evident from the \figurename{\ref{fig:RxPowervsRange}}, if the interferer is present in the neighborhood of the target, target's receive power will only dominate if the target range is less than 5 meters (approx). This shows that the likelihood of the weak targets getting masked by the strong targets is very high.
+
+\vspace*{-0.2in}\subsubsection*{Pseudo Code}\vspace*{-0.1in}
+The simplified version of the actual implementation can be found in the \nameref{Pseudo-Code}. Details such as OOPs based implementations and normalization of data at various stages have been omitted to maintain ease of reading.
+%%% ---- Pseudo Code start -----
+\begin{algorithm}[t]
+\SetAlgoLined
+\KwResult{ $P_D = (P_{FA})^{\frac{1}{1+SNR}}$ }
+Configure Chirp characteristics of Victim Sensor \& Interferer Sensors\;
+Configure Target initial state, dynamics \& Reflection property\;
+\While{target distance $\geq$ 1~meter}
+{
+\For{L Chirps}
+{
+ Rx Signal $\longleftarrow$ Tx Signal manipulation: Tx gain, channel gain, Rx gain\;
+ RxSignal $\longleftarrow$ superimpose the Interferer signal \& Rx signal\;
+ RxSignal $\longleftarrow$ Add thermal noise\;
+ De-chirp Rx Signal with Tx Signal\;
+ RxSignal\textsubscript{composite} $\longleftarrow$ Accumulate current chirp data\;
+}
+% \EndFor
+ Windowing\;
+ Perform 2D FFT\;
+ Perform OS-CFAR\;
+ Thresholding\;
+ SNR evaluation at known target location\;
+ Update Target location\;
+}
+% \EndWhile
+ Evaluate the $P_{D}$ from the SNR characteristics with range\;
+\caption{derive detection probability and SNR with decreasing range of single target}
+\label{Pseudo-Code}
+\end{algorithm}
+%%% ---- Pseudo Code end -----
+%% ---- Fig start -----
 \begin{figure}[t]
    \centering
    \includegraphics[width=0.7\textwidth]{images/rect11.png}
-   \caption{Diagram that depicts the Victim Sensor and Interferer arrangement}
+   \caption{Illustration depicting the Victim Sensor and Interferer arrangement}
 	 \label{fig:DiagVctm_Int_arrng}
 \end{figure}
 %%% ---- Fig end -----
-\subsection*{Hardware Measurement}
-The tests and measurements were performed in a controlled environment with less clutter from other stray objects. The hardware used for Victim radar sensor was: AWR1642-BOOST and Interferering sensor hardwares were AWR1443, IWR1843-BOOST from TI.
-
-
+\section{Indoor Interference Measurement Setup}
+%{\color{red} I would put a section here called Interference Analysis, and provide the part which you have written for simulation and results, describing the pseudo code and so on. I would say you can have the measurement setup after that and calling it  validation of the simulation by measurement}
+The tests and measurements were performed in a controlled environment with less clutter from other stray objects. The hardware used for Victim radar sensor was: AWR1642-BOOST and Interferering sensor hardwares were AWR1443, IWR1843-BOOST from \gls{TI}.
 %%% ---- Table start: enter the chirp configurations for Victim Radar -----
 The table \ref{table:1} mentions the chirp parameters of the sensors used for the experiment.
-
-\restylefloat{table}
+%
+% \restylefloat{table}
 \begin{table}[t]
+\caption{Chirp parameters of the sensors used for the experiment in controlled conditions inside a measurement room }
+\label{table:1}
 \centering
 \begin{tabular}{||c c c c c||} 
  \hline
     & Victim sensor & Interferer 1 & Interferer 2 & Interferer 3\\ [0.5ex] 
  \hline\hline
  Carrier Freq (GHz)    & 77.00  & 77.00  & 77.00  & 77.00\\ 
- Freq Slope (MHz/us)   & 29.982 & x      & x      & x\\
- Chirp Time (us)       & 60     & x      & x      & x\\
+ Freq Slope (MHz/us)   & 29.982 & x      & x      &  x \textsuperscript{\ref{ftnt1}}\\
+ Chirp Time (us)       & 60     & x      & x      & x \\
  Bandwidth (GHz)       & 1.7982 & 1.7845 & 1.7845 & 1.7845\\
  Rx Gain (dB)          & 30     & x      & x      & x\\ 
  Sampling Freq (MHz)   & 10     & x      & x      & x\\
  Frame Time (ms)       & 40     & 100    & 100    & 100\\ [1ex] 
  \hline
 \end{tabular}
-\caption{Chirp parameters of the sensors used for the experiment in controlled conditions inside a measurement room}
-\label{table:1}
 \end{table}
+\footnote{\label{ftnt1} Note: x - denotes that the parameters are unknown as their tuning was not possible due to limited options in the HW setup of TI-1843} 
 %%% ---- Table end -----
 %%% ---- Fig start -----
-\begin{figure}[h]
+\begin{figure}[ht]
    \centering
-   \includegraphics[width=0.7\textwidth]{images/Victim_Interferer_Sensor_Arngmnt.pdf}
+   \includegraphics[width=1.0\textwidth]{images/Victim_Interferer_Sensor_Arngmnt.pdf}
    \caption{Actual measurement setup: Victim Sensor and Interferer arrangement}
 	 \label{fig:Actl_Vctm_Int_arrng}
 \end{figure} 
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.7\textwidth]{images/TimeDomainNoiseFlrZeroSingleInterf.eps}
+   \caption{Time domain plot of the Noise Floor, Clutter and Single Interferer signals}
+	 \label{fig:TimeDomainNoiseFlrZeroSingleInterf}
+\end{figure} 
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.7\textwidth]{images/TimeDomainZeroDoubleInterf.eps}
+   \caption{Time domain plot of the Clutter and double Interferer signals}
+	 \label{fig:TimeDomainClutterDoubleInterf}
+\end{figure}
+The plots in the \figurename{\ref{fig:TimeDomainNoiseFlrZeroSingleInterf}} and \figurename{\ref{fig:TimeDomainClutterDoubleInterf}} shows the receive signal from the Noise floor, Clutter, Single Interferer and Double interferer. Further analysis and results which are correlated with the results obtained from the simulations will be provided in the final version of the paper.
 %%% ---- Fig end -----
-
+\begin{comment}
 The recordings were performed in the following sequence:
-\begin{itemize}
-    \item Only Victim sensor operating, but fully covered with Absorbing sheet; Motive: Measure Thermal noise estimate of the victim sensor Fig: [\ref{fig:NoiseFloor}]
-    \item Only Victim sensor operating, All interferers placed at the planned location but all switched OFF; Motive: Measure the Clutter + Passive targets from the room Fig:[\ref{fig:StaticDetn}]
-    \item Victim sensor operating, only One interferer should be switched ON; Motive: Measure the Interference of 1 interferer Fig: [\ref{fig:DifferenceMap}]
-    \item similarly, introduce new interferers Fig: [\ref{fig:3Interf}]
-\end{itemize}
+\begin{enumerate}
+    \item Only Victim sensor operating, but fully covered with Absorbing sheet; Motive: Measure Thermal noise estimate of the victim sensor \figurename{\ref{fig:NoiseFloor}}: 
+    \item Only Victim sensor operating, All interferers placed at the planned locations but all switched OFF; Motive: Measure the Clutter + Passive targets from the room \figurename{\ref{fig:StaticDetn}}
+    \item Victim sensor operating, only One interferer should be switched ON; Motive: Measure the Interference of 1 interferer \figurename{\ref{fig:DifferenceMap}}
+    \item Consequently, introduce new interferers \figurename{\ref{fig:3Interf}}
+\end{enumerate}
 %%% ---- Fig start -----
-\begin{figure}[h]
+\begin{figure}[ht]
    \centering
    \includegraphics[width=0.7\textwidth]{images/NoiseFloor_HW.PNG}
    \caption{Noise Floor}
 	 \label{fig:NoiseFloor}
 \end{figure} 
 %%% ---- Fig start -----
-\begin{figure}[h]
+\begin{figure}[ht]
    \centering
    \includegraphics[width=0.7\textwidth]{images/StaticDetections.PNG}
    \caption{Static Detections in the Measurement Room}
 	 \label{fig:StaticDetn}
 \end{figure} 
 %%% ---- Fig start -----
-\begin{figure}[h]
+\begin{figure}[ht]
    \centering
    \includegraphics[width=0.7\textwidth]{images/DifferenceMap.PNG}
    \caption{Difference Map of single interferer}
 	 \label{fig:DifferenceMap}
 \end{figure}
 %%% ---- Fig start -----
-\begin{figure}[h]
+\begin{figure}[ht]
    \centering
    \includegraphics[width=0.7\textwidth]{images/RngDop_ltx_3Interf.png}
    \caption{Spectrum with 3 Interferers }
 	 \label{fig:3Interf}
 \end{figure}
 %%% ---- Fig end -----
-\subsection*{Simulation}
-Simulations were performed on MATLAB keeping in view 2 types of scenarios: Indoor and Outdoor sensing. For Indoor sensing, the victim and interferer sensor characteristics were as mentioned in Table - \ref{table:1}. 
-Further, w.r.t. Outdoor sensing, there could be high number of interferers that can be present in the victim radar's FoV, therefore, 20 Interferers were injected into the scenario for both similar and intersecting type of interference. This enabled us to manifest the deteriorated performance of the sensor in the worst possible interference setup that can happen in an indoor envrionment.
-In order to derive more reliable results, Monte Carlo simulations were run on the PC to derive better estimate for the parameters: SnR, detection probability and spectrum states in different ranges of the approaching target.
 
-\subsubsection*{Pseudo Code}
-The simplified version of the actual implementation can be found in the \nameref{Pseudo-Code}. Details such as OOPs based implementations and normalization of data at various stages have been omitted to maintain ease of reading.
+    \section{Results}
+    \subsection*{Indoor Scenario: Comparison of results from Actual Measurements with Simulation}
+    Recording: Difference Map from HW compared with Simulation results
+    
+    \subsection*{Indoor Scenario: \gls{SNR} and Detection Probability evaluation using Validated Sensor parameters - Scenario extension}
+    Dynamic target: Target motion from 10m to 1m. Derive detection probability and SnR with Static interferers.
+    
+    
+    \subsection*{Outdoor scenario: \gls{SNR} and Detection Probability evaluation using Validated Sensor parameters - Scenario extension with variation in type of interference}
+    Target motion from 100m to 1m. Derive detection probability and \gls{SNR} with dynamic interferers.
+    The results referred in \figurename{\ref{fig:SnR}}, indicate the degradation in the Signal-to-Noise ratio w.r.t. increasing range of the Target. Detection probability was derived from \gls{SNR} characteristics [refer \figurename{\ref{fig:PD}}] using the relationship mentioned below [\cite{Richards12}, Sec. 3.3.8]:
+    \begin{equation}\label{eq:PD_vs_SnR}
+    P_D = (P_{FA})^{\frac{1}{1+SNR}}
+    \end{equation} 
+    
+    % figure attachment
+    \begin{figure}[ht]
+       \centering
+       \includegraphics[width=0.7\textwidth]{images/PD_vs_Rng_MntCrl_72Cyc_100Itrns_PARFOR.png}
+       \caption{Detection Probability vs Range}
+    	 \label{fig:PD}
+    \end{figure} 
+    
+    \begin{figure}[ht]
+       \centering
+       \includegraphics[width=0.7\textwidth]{images/SnR_vs_Rng_MntCrl_72Cyc_100Itrns_PARFOR.png}
+       \caption{Signal to Noise Ratio (SnR) vs Range}
+    	 \label{fig:SnR}
+    \end{figure} 
 
-%%% ---- Pseudo Code start -----
-\begin{algorithm}[t]
-\SetAlgoLined
-\KwResult{ $P_D = (P_{FA})^{\frac{1}{1+SNR}}$ }
-
-Configure Chirp characteristics of Victim Sensor \& Interferer Sensors\;
-Configure Target initial state, dynamics \& Reflection property\;
-\While{target distance \geq 1 meter}
-{
-\For{L Chirps}
-{
-\State Rx Signal $\longleftarrow$ Tx Signal manipulation: Tx gain, channel gain, Rx gain\;
-\State RxSignal $\longleftarrow$ superimpose the Interferer signal \& Rx signal\;
-\State RxSignal $\longleftarrow$ Add thermal noise\;
-\State De-chirp Rx Signal with Tx Signal\;
-\State RxSignal\textsubscript{composite} $\longleftarrow$ Accumulate current chirp data\;
-}
-\EndFor
-\State Windowing\;
-\State Perform 2D FFT\;
-\State Perform OS-CFAR\;
-\State Thresholding\;
-\State SnR evaluation at known target location\;
-\State Update Target location\;
-}
-\EndWhile
-\State Evaluate the P\textsubscript{d} from the SnR characteristics with range\;
-\caption{derive detection probability and SNR with decreasing range of single target}
-\label{Pseudo-Code}
-\end{algorithm}
-%%% ---- Pseudo Code end -----
-
-\section{Results}
-\subsection*{Indoor Scenario: Comparison of results from Actual Measurements with Simulation}
-Recording: Difference Map from HW compared with Simulation results
-
-\subsection*{Indoor Scenario: SnR and Detection Probability evaluation using Validated Sensor parameters - Scenario extension}
-Dynamic target: Target motion from 10m to 1m. Derive detection probability and SnR with Static interferers.
-
-
-\subsection*{Outdoor scenario: SnR and Detection Probability evaluation using Validated Sensor parameters - Scenario extension with variation in type of interference}
-Target motion from 100m to 1m. Derive detection probability and SnR with dynamic interferers.
-The results referred in fig \ref{fig:SnR}, indicate the degradation in the Signal-to-Noise ratio w.r.t. increasing range of the Target. Detection probability was derived from SnR characteristics [refer Fig: \ref{fig:PD}] using the relationship mentioned below [\cite{Richards12}, Sec. 3.3.8]:
-\begin{equation}\label{eq:PD_vs_SnR}
-P_D = (P_{FA})^{\frac{1}{1+SNR}}
-\end{equation} 
-
-% figure attachment
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=0.7\textwidth]{images/PD_vs_Rng_MntCrl_72Cyc_100Itrns_PARFOR.png}
-   \caption{Detection Probability vs Range}
-	 \label{fig:PD}
-\end{figure} 
-
-\begin{figure}[h]
-   \centering
-   \includegraphics[width=0.7\textwidth]{images/SnR_vs_Rng_MntCrl_72Cyc_100Itrns_PARFOR.png}
-   \caption{Signal to Noise Ratio (SnR) vs Range}
-	 \label{fig:SnR}
-\end{figure} 
-
-
-\section{Conclusion}
-The present work tries to highlight different types of interference possible in the real scenarios in Indoor and outdoor sensing and its impact on the detection probability of the target.    
-
-\section{Appendix}
-\subsection*{Applications in Indoor sensing}\label{appendix_1}
-Applications in Indoor sensing are mentioned below:
-\begin{itemize}
-\item Parking lot management
-\item Dangerous machine lock / cut-off
-\item Robot positioning
-\item New-born and premature baby monitoring
-\item Elderly fall and emergency detection
-\item Vibration mapping for predictive maintenance
-\item Unmanned vehicle guidance
-\item Drone swarm collision avoidance
-\item People counting and people flow management
-\item Access control
-\item Flash and run-through body scanners
-\item Molecular fingerprints
-\item Automotive interior monitoring
-\end{itemize}
-
-
-
-\vsp{1em}
-
+\end{comment}
+%
+\vspace*{-0.2in}\section{Conclusion}\vspace*{-0.1in}
+The present work tries to highlight different types of interference possible in the real scenarios in Indoor sensing and its impact on the detection probability of the target. It highlights the seriousness of the issue and insists on the need of robust interference mitigation techniques on top of the cognitive handshake mechanisms which must be applied at Victim and Interferer sensors end \cite{Interf123}.
+% \vsp{1em}
 \def\bibname{LIT}
 \begin{thebibliography}{88}
 \def\bibname{LIT}
@@ -357,8 +559,7 @@ Guochao Wang, Changzhan Gu, Takao Inoue and Changzhi Li, "A Hybrid FMCW-Interfer
 
 \bibitem{MOSARIM2012}
 MOSARIM: "Recommendations on sensor design, mounting and operational parameters to minimize radar interference", Report dated 6.12.2012.
-
-
+%
 \bibitem{Skolnik21}
 "Radar Handbook", \emph{Merill I. Skolnik,  Eds, et al; 2008}
 
@@ -367,6 +568,12 @@ MOSARIM: "Recommendations on sensor design, mounting and operational parameters 
 
 \bibitem{Alland23}
 S. Alland, W. Stark, M. Ali and M. Hegde, "Interference in Automotive Radar Systems", \emph{IEEE signal processing magazine, September 2019, Vol.36(5), pp.45-59.} 
+
+\bibitem{Interf78}
+S. Murali, K. Subburaj, Brian Ginsburg and K. Ramasubramanian, "Interference Detection in FMCW Radar Using A Complex Baseband Oversampled Receiver", \emph{2018 IEEE Radar Conference (RadarConf18)}
+
+\bibitem{Interf93}
+Saverio Trotta, Markus Wintermantel, et.al., "An RCP Packaged Transceiver Chipset for Automotive LRR and SRR Systems in SiGe BiCMOS Technology", \emph{ IEEE Transactions on Microwave Theory and Techniques, Vol: 60, Issue: 3, March 2012}
 
 \bibitem{Interf45}
 A. Aydogdu, M.F. Keskin, G.K. Carvajal, O. Eriksson, H. Hellsten, H. Herbertsson, E. Nilsson, M. Rydstrom, K. Vanas and H. Wymeersch, "Radar Interference Mitigation for Automated Driving", \emph{IEEE signal processing magazine, July 2020, Vol. 37(4), pp.72-84.}
@@ -380,6 +587,8 @@ A. Bourdoux, K. Parashar and M. Bauduin, "Phenomenology of Mutual Interference o
 \bibitem{TI_2020}
 S. Rao and A. V.  Mani, "Interference Characterization in FMCW Radars", \emph{2020 IEEE Radar Conference (RadarConf20) }
 
+\bibitem{Interf123}
+Canan Aydogdu, Nil Garcia, Lars Hammarstrand and Henk Wymeersch, "Radar Communication for Combating Mutual Interference of FMCW Radars", \emph{2019 IEEE Radar Conference (RadarConf)}
 
 \bibitem{IEEEletter1}
 R. J. C. Middleton, "Dechirp-on-Receive Linearly Frequency Modulated Radar as a Matched-Filter Detector", \emph{ IEEE Transactions on Aerospace and Electronic Systems ( Volume: 48, Issue: 3, JULY 2012)}
@@ -422,31 +631,4 @@ Fatemeh Norouzian, Anum Pirkani, Edward Hoare, Mikhail Cherniakov and Marina Gas
     \caption{System Model description}	 \label{fig:SystemModel}
     \end{figure} 
     % Comment@Mohammad: {\color{red} I would recommend to make the image pdf and then insert the pdf to have the text as vector. Also, I would recommend to use Visio for plotting this figure}
-
-
-%% Comments given in the template
-    %Define abbreviations and acronyms the first time they are used in the text, even after they have been defined in the abstract. Abbreviations such as IEEE, SI, MKS, CGS, sc, dc, and rms do not have to be defined. Do not use abbreviations in the title or heads unless they are unavoidable.
-    %You will need to determine whether or not your equation should be typed using either the Times New Roman or the Symbol font. 
-    %You have to number equations consecutively. Equations should be entered inline $E=mc^2$ or in a separate line with equation numbering
-    
-    % Note that the equation is centered. Be sure that the symbols in your equation have been defined before or immediately following the equation. Use ``\eqref{eq:wn}'', not ``Eq.~\eqref{eq:wn}'' or ``equation~\eqref{eq:wn}'', except at the beginning of a sentence: ``Equation~\eqref{eq:wn} is \dots''.
-    % The colorful version of figures will be implemented in the USB stick with the conference proceedings. 
-    % Figure captions should be below the figures; table heads should appear above the tables. Insert figures and tables after they are cited in the text. Use the abbreviation ``Fig.~\ref{fig:sample}'', even at the beginning of a sentence. Use words rather than symbols or abbreviations when writing Figure axis labels to avoid confusing the reader. 
-    % You have to number citations consecutively within brackets \cite{Alland23}. Do not use Ref.~\cite{Alland23} or reference~\cite{Alland23} except at the beginning of a sentence: Reference~\cite{Alland23} was the first \dots.
-    %The electronic version must be submitted online in Acrobat PDF format to the conference organizers via the IRS 2021 website before the specified deadlines.
-    
-    % Maximum number of pages is limited to 10.
-    % At least one author has to register and to pay the conference fee.
-    % All final papers must be converted to PDF Format by the IEEE eXpress service.
-    % Further information can be found on the web site: http://dgon-irs.org
-    
-    %% Quick Tips
-    
-    %Tip 1:
-    %\begin{equation}\label{eq:1}
-    %\begin{aligned}
-    %s(t) &= \sum_{k=1}^{K-1} x(t - kT)\\
-    %       &=\sum_{k=1}^{K-1} x(t - kT)
-    %\end{aligned}
-    %\end{equation}
 \end{comment}
